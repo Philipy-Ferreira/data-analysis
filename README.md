@@ -1,10 +1,10 @@
-# Tej El Molk Ennouri - Portfolio
+# Philipy Ferreira - Portfolio
 
 
 ## About
 
 
-I’m **Tej El Molk — Molka** for short, a **data enthusiast** and **aspiring data analyst** with experience at **AIRBUS** as a **PMO**, 
+I’m **Philipy Ferreira** a **data enthusiast** and **data analyst** with experience at **AIRBUS** as a **PMO**, 
 specializing in **reporting** and **dashboard visualization**. <br>
 I use mainly **SQL**, **Power Query**, **Python**, **Power BI**, and **Looker** to **analyze data** and **uncover actionable insights**.<br>
 Here, you’ll find my **projects**, **analyses**, and **portfolio pieces**—complete with **code**, **reports**, and **explanations** <br>
@@ -106,59 +106,31 @@ Shows strong growth in revenue and orders driven by new customers and popular pr
 
 [See full project Olist](Projects/Olist/)
 
-
----
-
-## Skills
-
-- **Data Cleaning & Preparation**
-- **Exploratory Data Analysis (EDA)**
-- **Data Visualization**
-- **Statistical Analysis**
-- **Data Modeling (Clustering, Classification)**
-- **Dashboard & Reporting**
-
 ---
 
 ## Tools & Technologies
 
-- **SQL:** PostgreSQL, MySQL  
-- **Python:** Pandas, Matplotlib, Seaborn, Jupyter, Google Colab, VS Code  
-- **Excel & Power Query**  
-- **BI & Visualization:** Power BI, Tableau, Looker Studio  
-- **Other:** Data Transformation, Pivot Tables, Interactive Dashboards
-
+- **SQL**
+- **R**
+- **Excel & Power Query**
+- **BI & Visualization** Power BI, Tableau
 
 ---
 
 ## Education
 
-- **Jedha Bootcamp – Data Analytics (State Certified)**  
+- **Marketing**, Senac Brasilia
 
-- **Master in International Trade**, IAE Nice  
-
-- **Management Degree**, IHEC Tunis  
-
+- **MBA in Project Management**, USP
 
 ---
 
 ## Certificates
 
-- **CMS for Data Hub – HubSpot Academy**  
-
 - **Google Analytics Certification**  
-
-- **Data Science Developer & Designer – Jedha Bootcamp (Modules 2 & 6)**  
-
 
 ---
 
 ## Contact
-- **LinkedIn**: [@TejElMolkEnnouri](https://www.linkedin.com/in/tej-el-molk-ennouri/)  
-- **Email**: tejelmolkennour@gmail.com
-- **Website**: [https://www.tonsitewix.com](https://www.tonsitewix.com)
-
-
----
-**Copyright (c) 2025 Tej El Molk Ennouri** <br>
-**All rights reserved. For demonstration purposes only**
+- **LinkedIn**: [(https://www.linkedin.com/in/philipyferreira/)]
+- **Email**: philipylferreira@gmail.com
