@@ -7,7 +7,7 @@
 I’m **Philipy Ferreira** a **data analyst** with extensive and hands-on experience in **MARKETING**.<br>
 Here, you’ll find my **portfolio pieces**, complete with **code**, **reports** and **explanations** <br>
 I mainly use **Excel**, **SQL**, **R** and **Tableau** to clean, organize, **analyze data** and **uncover actionable insights**.<br>
-I have a deep passion for **Markting**, **Economics** and all the **Business** in-between, **turning complex data into meaningful stories** that **inform decisions** and **drive real impact**.
+I love **turning complex data into meaningful stories** that **inform decisions** and **drive real impact** in **Markting**, **Economics** and all the **Business** in-between.
 
 ---
 
