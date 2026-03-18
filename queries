@@ -1,0 +1,286 @@
+**Business Question 1**
+
+  How is the marketplace actually performing?
+  
+  Analysis of sales dynamics, order volume, revenue composition, and product category performance.
+
+ **Sales**
+  
+  **Query**
+  
+    SELECT
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH) AS month,
+      COUNT(DISTINCT o.order_id) AS orders,
+      COUNT(oi.order_item_id) AS items,
+      ROUND (SUM(oi.price),2) AS revenue,
+      ROUND (AVG(oi.price),2) AS avg_item_price_month,
+      ROUND (SUM(oi.price) / COUNT(DISTINCT o.order_id),2) AS avg_order_price_month
+    FROM `olist-490117.1.orders` o
+    JOIN `olist-490117.1.order_items` oi
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY month
+    ORDER BY month;
+
+
+**Scale**
+  
+  **Query**
+
+    CREATE OR REPLACE VIEW `olist-490117.1.first_customers` AS 
+    SELECT
+      c.customer_unique_id AS active_customer,
+      DATE_TRUNC(MIN(DATE(o.order_purchase_timestamp)), MONTH) AS month
+      FROM `olist-490117.1.customers` c
+        JOIN `olist-490117.1.orders` o
+      ON o.customer_id = c.customer_id
+    WHERE o.order_status = 'delivered'
+    GROUP BY active_customer;
+
+    CREATE OR REPLACE VIEW `olist-490117.1.first_sale` AS 
+    SELECT
+      oi.seller_id AS active_seller,
+      DATE_TRUNC(MIN(DATE(o.order_purchase_timestamp)), MONTH) AS month
+      FROM `olist-490117.1.order_items` oi
+        JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE o.order_status = 'delivered'
+    GROUP BY active_seller;
+
+    SELECT
+      COUNT(DISTINCT(oi.seller_id)) AS active_sellers,
+      COUNT(DISTINCT(c.customer_unique_id)) AS active_customers,
+      COUNT(DISTINCT(o.order_id)) AS orders,
+      COUNT(DISTINCT CASE
+            WHEN fs.month = DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+            THEN(oi.seller_id)
+      END) AS new_sellers,
+      COUNT(DISTINCT CASE
+            WHEN fc.month = DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+            THEN(c.customer_unique_id)
+      END) AS new_customers,  
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH) AS month,
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    JOIN `olist-490117.1.customers` c
+      ON o.customer_id = c.customer_id
+    JOIN `olist-490117.1.first_sale` fs
+      On oi.seller_id = fs.active_seller
+    JOIN `olist-490117.1.first_customers` fc
+      On c.customer_unique_id = fc.active_customer 
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY month
+    ORDER BY month;
+
+**Revenue composition**
+
+  **Query**
+
+    SELECT
+      ct.product_category_name_english AS category,
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH) AS month,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.products` p
+      ON oi.product_id = p.product_id
+    JOIN `olist-490117.1.categories_translation` ct
+      ON p.product_category_name = ct.product_category_name
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY category, month
+    ORDER BY category, month;
+  
+    SELECT
+      oi.seller_id,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY seller_id
+    ORDER BY revenue DESC;
+    
+    
+    
+    SELECT
+      seller_state,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.sellers` s
+      ON oi.seller_id = s.seller_id
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY s.seller_state
+    ORDER BY revenue DESC;
+    
+    
+    SELECT
+      seller_city,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.sellers` s
+      ON oi.seller_id = s.seller_id
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY s.seller_city
+    ORDER BY revenue DESC;
+
+
+**Marketplace concentration**
+
+  **Query**
+
+    CREATE OR REPLACE VIEW `olist-490117.1.revenue_per_seller` AS
+    SELECT
+      oi.seller_id,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY seller_id
+    ORDER BY revenue DESC;
+    
+    
+    CREATE OR REPLACE VIEW `olist-490117.1.seller_market_share` AS
+    SELECT
+      rs.seller_id,
+      (rs.revenue/t.total_revenue) AS market_share
+    FROM `olist-490117.1.revenue_per_seller` rs
+    CROSS JOIN (
+      SELECT SUM(revenue) as total_revenue
+      FROM `olist-490117.1.revenue_per_seller`
+    ) t;
+    
+    SELECT 
+      SUM(POWER(market_share,2))*10000 AS hhi
+    FROM
+      `olist-490117.1.seller_market_share`
+
+
+    CREATE OR REPLACE VIEW `olist-490117.1.revenue_per_state` AS
+    SELECT
+      s.seller_state,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.sellers` s
+      ON oi.seller_id = s.seller_id
+    JOIN `olist-490117.1.orders` o
+      ON oi.order_id = o.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY seller_state
+    ORDER BY revenue DESC;
+    
+    CREATE OR REPLACE VIEW `olist-490117.1.market_share_per_state` AS
+    SELECT
+      rs.seller_state,
+      (rs.revenue/t.total_revenue) AS market_share
+    FROM `olist-490117.1.revenue_per_state` rs
+    CROSS JOIN (
+      SELECT SUM(revenue) as total_revenue
+      FROM `olist-490117.1.revenue_per_state`
+    ) t;
+    
+    SELECT
+      ROUND(SUM(POWER(market_share,2))*10000) AS hhi
+    FROM
+      `olist-490117.1.market_share_per_state`
+
+
+    CREATE OR REPLACE VIEW `olist-490117.1.revenue_per_city` AS
+    SELECT
+      s.seller_city,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.sellers` s
+      ON oi.seller_id = s.seller_id
+    JOIN `olist-490117.1.orders` o
+      ON oi.order_id = o.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY seller_city;
+    
+    CREATE OR REPLACE VIEW `olist-490117.1.market_share_per_city` AS
+    SELECT
+      rs.seller_city,
+      (rs.revenue/t.total_revenue) AS market_share
+    FROM `olist-490117.1.revenue_per_city` rs
+    CROSS JOIN (
+      SELECT SUM(revenue) as total_revenue
+      FROM `olist-490117.1.revenue_per_city`
+    ) t;
+    
+    SELECT
+      ROUND(SUM(POWER(market_share,2))*10000) AS hhi
+    FROM
+      `olist-490117.1.market_share_per_city`
+
+
+    CREATE OR REPLACE VIEW `olist-490117.1.revenue_per_category` AS
+    SELECT
+      ct.product_category_name_english AS category,
+      ROUND (SUM(oi.price),2) AS revenue
+    FROM `olist-490117.1.order_items` oi
+    JOIN `olist-490117.1.products` p
+      ON oi.product_id = p.product_id
+    JOIN `olist-490117.1.categories_translation` ct
+      ON p.product_category_name = ct.product_category_name
+    JOIN `olist-490117.1.orders` o
+      ON o.order_id = oi.order_id
+    WHERE
+      DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH)
+          BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+      AND o.order_status = 'delivered'
+    GROUP BY category;
+    
+    CREATE OR REPLACE VIEW `olist-490117.1.market_share_per_category` AS
+    SELECT
+      rs.category,
+      (rs.revenue/t.total_revenue) AS market_share
+    FROM `olist-490117.1.revenue_per_category` rs
+    CROSS JOIN (
+      SELECT SUM(revenue) as total_revenue
+      FROM `olist-490117.1.revenue_per_category`
+    ) t;
+    
+    SELECT
+      ROUND(SUM(POWER(market_share,2))*10000) AS hhi
+    FROM
+      `olist-490117.1.market_share_per_category`
+
+
+
+
+
+
+
