@@ -279,8 +279,80 @@
       `olist-490117.1.market_share_per_category`
 
 
+**Business Question 2**
 
+  How efficiently are orders being fulfilled?
+  
+  How long deliveries take, how often deadlines are missed, which sellers or product categories create operational friction, and how logistics (distance, freight, fulfillment time) affect the transaction.
 
+ **Delivery**
+
+# Average_delivery time per order
+  SELECT
+    CAST(ROUND(AVG(
+      DATE_DIFF(
+        DATE(order_delivered_customer_date),
+        DATE(order_purchase_timestamp),
+        DAY)
+      ))AS INT64) AS delivery_time_days
+  FROM
+    `olist-490117.1.orders`;
+  
+  # Delivery time per month
+  SELECT
+    DATE_TRUNC((DATE(order_purchase_timestamp)), MONTH) AS month,
+    CAST(ROUND(AVG(
+      DATE_DIFF(
+        DATE(order_delivered_customer_date),
+        DATE(order_purchase_timestamp),
+        DAY)
+      ))AS INT64) AS delivery_time_days
+  FROM
+    `olist-490117.1.orders`
+  WHERE
+    DATE(order_purchase_timestamp) BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+  GROUP BY month
+  ORDER BY month;
+  
+  # Average delivery time per category
+  SELECT
+    ct.product_category_name_english,
+    CAST(ROUND(AVG(
+      (DATE_DIFF(
+        DATE(o.order_delivered_customer_date),
+        DATE(o.order_purchase_timestamp),
+        DAY)
+      )))AS INT64) AS delivery_time_days
+  FROM
+    `olist-490117.1.orders` o
+  JOIN `olist-490117.1.order_items` oi
+    ON o.order_id = oi.order_id
+  JOIN `olist-490117.1.products` p
+    ON oi.product_id = p.product_id
+  JOIN `olist-490117.1.categories_translation` ct
+    ON ct.product_category_name = p.product_category_name
+  WHERE
+    DATE(o.order_purchase_timestamp) BETWEEN DATE '2017-08-01' AND DATE '2018-08-31'
+  GROUP BY product_category_name_english
+  ORDER BY delivery_time_days;
+  
+  # Average delivery time per state
+  SELECT
+    s.seller_state,
+    CAST(ROUND(AVG(
+      (DATE_DIFF(
+        DATE(o.order_delivered_customer_date),
+        DATE(o.order_purchase_timestamp),
+        DAY)
+      )))AS INT64) AS delivery_time_days
+  FROM
+    `olist-490117.1.sellers` s
+  JOIN `olist-490117.1.order_items` oi
+    ON s.seller_id = oi.seller_id
+  JOIN `olist-490117.1.orders` o
+    ON o.order_id = oi.order_id
+  GROUP BY seller_state
+  ORDER BY delivery_time_days;
 
 
 
