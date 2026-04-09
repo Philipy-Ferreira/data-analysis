@@ -43,14 +43,20 @@ Olist is a Brazilian retail technology company that provides infrastructure for 
 
 **Main Insights:**
 
-* To be written what was found
+
+* **Market concentration**: geographic concentration in SP (64%) creates single-point risk. Diversification is a strategic priority.
+
+* **Expansion targets**: Minas Gerais, Rio de Janeiro and Rio Grande do Sul represent the highest ROI expansion targets based on GDP gap analysis.
+
+* **Customer retention rate near-zero** retention rate (0.5%) signals an untapped lever. Loyalty programs could significantly reduce CAC.
+
+* **Logistics drives satisfaction**: regression analysis identifies delivery time as the strongest predictor of review score. Faster delivery = higher ratings = stronger retention.
 
 **Tools / Skills Used:**
 - Excel:
   - Initial dataset inspection
   - exploratory summaries
 - R:
-  - Data cleaning and transformation
   - Exploratory data analysis
   - Statistical investigation
 - SQL:
@@ -59,6 +65,9 @@ Olist is a Brazilian retail technology company that provides infrastructure for 
 - Tableau:
   - Interactive dashboards
   - business-focused visualizations
+ 
+ - PPT:
+   - C-suit presentation
 
 [See full project Olist](Projects/Olist/)
 
@@ -75,9 +84,11 @@ Olist is a Brazilian retail technology company that provides infrastructure for 
 
 ## Education
 
-- **Marketing**, Senac Brasilia
+- **Economics**, PUC Minas
 
 - **MBA in Project Management**, USP
+
+- **Marketing**, Senac Brasilia
 
 ---
 
