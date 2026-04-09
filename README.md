@@ -66,7 +66,7 @@ Olist is a Brazilian retail technology company that provides infrastructure for 
 
 [See full project Olist](Projects/Olist/)
 
-[See full project Olist](Projects/Olist/queries/)
+[See full project Olist queries](Projects/Olist/queries/)
 
 ---
 
