@@ -3,11 +3,9 @@
 
 ## About
 
+I focus on using data to answer business-critical questions and support strategic decision-making. My work combines data analysis (SQL, R, Tableau) with business context to identify growth opportunities, operational inefficiencies and market risks.
 
-I’m **Philipy Ferreira** a **data analyst** with extensive and hands-on experience in **MARKETING**.<br>
-Here, you’ll find my **portfolio pieces**, complete with **code**, **reports** and **explanations**. <br>
-I mainly use **Excel**, **SQL**, **R** and **Tableau** to clean, organize, **analyze data** and **uncover actionable insights**.<br>
-I work to **turn complex data into meaningful stories** that **inform impactful decisions** in **Markting**, **Economics** and all the **Business** in-between.
+My projects simulate real-world strategy problems such as market expansion, customer retention, and operational performance optimization.
 
 ---
 
@@ -34,23 +32,20 @@ Olist is a Brazilian retail technology company that provides infrastructure for 
 * customer reviews
 
 **Main questions:**
-* How is the marketplace actually performing?
-  * Analysis of sales dynamics, order volume, revenue composition, and product category performance.
-* How efficiently are orders being fulfilled?
-  * Investigation of delivery times, logistics performance, freight costs, and seller reliability.
-* What determines customer satisfaction?
-  * Analysis of review scores and their relationship with delivery performance, product characteristics, and seller behavior.
+* Where should the company expand to maximize growth?
+* What operational bottlenecks are limiting customer satisfaction?
+* Which levers can improve retention and long-term profitability?
 
 **Main Insights:**
 
 
-* **Market concentration**: geographic concentration in SP (64%) creates single-point risk. Diversification is a strategic priority.
+* **Market concentration risk**: 64% of sales in São Paulo creates structural dependency Diversification is a strategic priority.
 
-* **Expansion targets**: Minas Gerais, Rio de Janeiro and Rio Grande do Sul represent the highest ROI expansion targets based on GDP gap analysis.
+* **Expansion prioritization**: MG, RJ, RS identified as highest-potential markets based on demand gap analysis.
 
-* **Customer retention rate near-zero** retention rate (0.5%) signals an untapped lever. Loyalty programs could significantly reduce CAC.
+* **Retention gap**: 0.5% repeat purchase rate indicates major growth opportunity through loyalty mechanisms.
 
-* **Logistics drives satisfaction**: regression analysis identifies delivery time as the strongest predictor of review score. Faster delivery = higher ratings = stronger retention.
+* **Operational driver**: delivery time is the strongest predictor of customer satisfaction. Logistics is a strategic lever.
 
 **Tools / Skills Used:**
 - Excel:
