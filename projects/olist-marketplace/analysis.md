@@ -7,7 +7,7 @@ Analyzing data from orders from August 2017 – August 2018, I uncovered importa
 
 [View full presentation (PDF)](olist-marketplace-presentation.pdf)
 
-[View SQL queries](projects/olist-marketplace/sql/)
+[View SQL queries](projects/olist-marketplace/sql_queries/)
 
 ## Sales, growth and retention gap
 
