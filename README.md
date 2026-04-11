@@ -40,13 +40,13 @@ The dataset contains 100k e-commerce orders between 2016 and 2018, including inf
 
 **Main Insights:**
 * **Market concentration risk**
-64% of sales are concentrated in São Paulo, despite a fragmented seller base (HHI = 39 vs 4,348 by state). This creates structural dependency and limits scalable growth.
+  - 64% of sales are concentrated in São Paulo, despite a fragmented seller base (HHI = 39 vs 4,348 by state). This creates structural dependency and limits scalable growth.
 * **Expansion prioritization**
-Minas Gerais, Rio de Janeiro, and Rio Grande do Sul show strong GDP presence but low marketplace penetration, indicating high-return expansion opportunities.
+  - Minas Gerais, Rio de Janeiro, and Rio Grande do Sul show strong GDP presence but low marketplace penetration, indicating high-return expansion opportunities.
 * **Retention gap**
-Only ~0.5% of customers return. Growth is fully acquisition-driven, creating high dependency on new demand and limiting compounding effects.
+  - Only ~0.5% of customers return. Growth is fully acquisition-driven, creating high dependency on new demand and limiting compounding effects.
 * **Operational driver**
-Delivery time is the strongest predictor of customer satisfaction (−0.05 rating per additional day), linking logistics directly to retention and growth.
+  - Delivery time is the strongest predictor of customer satisfaction (−0.05 rating per additional day), linking logistics directly to retention and growth.
 
 **Tools / Skills Used:**
 - SQL:
