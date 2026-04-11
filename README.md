@@ -60,9 +60,9 @@ Delivery time is the strongest predictor of customer satisfaction (−0.05 ratin
  - Presentation (PPT):
    - Executive-level communication of insights
 
-[Full analysis](Projects/Olist/)
-
-[SQL queries](Projects/Olist/queries/)
+[Full analysis](projects/olist-marketplace/analysis.md)
+[Presentation (PDF)](projects/olist-marketplace/olist-marketplace-presentation.pdf)
+[SQL queries](projects/olist-marketplace/queries.sql)
 
 ---
 
