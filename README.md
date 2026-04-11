@@ -3,9 +3,9 @@
 
 ## About
 
-I focus on using data to answer business-critical questions and support strategic decision-making. My work combines data analysis (SQL, R, Tableau) with business context to identify growth opportunities, operational inefficiencies and market risks.
-
-My projects simulate real-world strategy problems such as market expansion, customer retention, and operational performance optimization.
+I use data to answer business-critical questions and support strategic decision-making.
+My work combines data analysis (SQL, R, Tableau) with economic reasoning to identify growth opportunities, operational constraints, and market risks.
+The focus is not only on analysis, but on translating data into actionable insights.
 
 ---
 
@@ -19,11 +19,13 @@ My projects simulate real-world strategy problems such as market expansion, cust
 ---
 
 ## Portfolio Projects
-Below is a selection of projects using real-world datasets. Each project contains the full analysis, code, and visualizations.
-### Olist
+Below is a selection of projects using real-world datasets. Each project includes full analysis, code, and business-oriented outputs.
+
+### Olist Marketplace Analysis
 
 **Overview:**
-Olist is a Brazilian retail technology company that provides infrastructure for small and medium businesses to sell across multiple online marketplaces.The dataset contains 100k e-commerce orders between 2016 and 2018, including information on:
+Olist is a Brazilian retail technology company that provides infrastructure for small and medium businesses to sell across multiple online marketplaces.
+The dataset contains 100k e-commerce orders between 2016 and 2018, including information on:
 * customers
 * products
 * sellers
@@ -31,51 +33,36 @@ Olist is a Brazilian retail technology company that provides infrastructure for 
 * delivery logistics
 * customer reviews
 
-**Main questions:**
+**Business questions:**
 * Where should the company expand to maximize growth?
 * What operational bottlenecks are limiting customer satisfaction?
 * Which levers can improve retention and long-term profitability?
 
 **Main Insights:**
-
-
-* **Market concentration risk**: 64% of sales in São Paulo creates structural dependency Diversification is a strategic priority.
-
-* **Expansion prioritization**: MG, RJ, RS identified as highest-potential markets based on demand gap analysis.
-
-* **Retention gap**: 0.5% repeat purchase rate indicates major growth opportunity through loyalty mechanisms.
-
-* **Operational driver**: delivery time is the strongest predictor of customer satisfaction. Logistics is a strategic lever.
+* **Market concentration risk**
+64% of sales are concentrated in São Paulo, despite a fragmented seller base (HHI = 39 vs 4,348 by state). This creates structural dependency and limits scalable growth.
+* **Expansion prioritization**
+Minas Gerais, Rio de Janeiro, and Rio Grande do Sul show strong GDP presence but low marketplace penetration, indicating high-return expansion opportunities.
+* **Retention gap**
+Only ~0.5% of customers return. Growth is fully acquisition-driven, creating high dependency on new demand and limiting compounding effects.
+* **Operational driver**
+Delivery time is the strongest predictor of customer satisfaction (−0.05 rating per additional day), linking logistics directly to retention and growth.
 
 **Tools / Skills Used:**
-- Excel:
-  - Initial dataset inspection
-  - exploratory summaries
-- R:
-  - Exploratory data analysis
-  - Statistical investigation
 - SQL:
-  - Data extraction and relational joins across multiple tables
-  - Aggregation of orders, items, and payments
+  - Data extraction, joins across relational tables, aggregation of orders and payments
+- R:
+  - Exploratory analysis and statistical modeling 
 - Tableau:
-  - Interactive dashboards
-  - business-focused visualizations
- 
- - PPT:
-   - C-suit presentation
+  - Business and visual storytelling
+- Excel:
+  - Initial data inspection and validation
+ - Presentation (PPT):
+   - Executive-level communication of insights
 
-[See full project Olist](Projects/Olist/)
+[Full analysis](Projects/Olist/)
 
-[See full project Olist queries](Projects/Olist/queries/)
-
----
-
-## Tools
-
-- **SQL**
-- **R**
-- **Excel**
-- **Tableau**
+[SQL queries](Projects/Olist/queries/)
 
 ---
 
