@@ -3,11 +3,11 @@
 
 ## About
 
-I use data to answer business-critical questions and support strategic decision-making.
+I use data to answer business-critical questions and support **strategic decision-making**.
 
-My work combines data analysis (SQL, R, Tableau) with economic reasoning to identify growth opportunities, operational constraints, and market risks.
+My work combines data analysis (SQL, R, Tableau) with **economic reasoning** to identify growth opportunities, operational constraints, and market risks.
 
-The focus is not only on analysis, but on translating data into actionable insights.
+The focus is not only on analysis, but on translating data into **actionable insights**.
 
 ---
 
