@@ -65,7 +65,7 @@ The dataset contains 100k e-commerce orders between 2016 and 2018, including inf
 
 [Presentation (PDF)](projects/olist-marketplace/olist-marketplace-presentation.pdf)
 
-[SQL queries](projects/olist-marketplace/sql/)
+[SQL queries](projects/olist-marketplace/sql_queries/)
 
 ---
 
