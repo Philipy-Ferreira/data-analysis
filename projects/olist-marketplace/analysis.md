@@ -7,6 +7,8 @@ Analyzing data from orders from August 2017 – August 2018, I uncovered importa
 
 [View full presentation (PDF)](olist-marketplace-presentation.pdf)
 
+[View SQL queries](projects/olist-marketplace/sql/)
+
 ## Sales, growth and retention gap
 
 The marketplace operates at an average of approximately 6,000 orders and 826,000 in monthly revenue, supported by around 6,000 new customers per period. 
