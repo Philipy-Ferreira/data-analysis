@@ -10,7 +10,6 @@ The focus is not only on analysis, but on translating data into actionable insig
 ---
 
 ## Table of Contents
-- [About](#about)
 - [Portfolio Projects](#portfolio-projects)
 - [Education](#education)
 - [Certificates](#certificates)
