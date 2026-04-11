@@ -15,10 +15,18 @@ However, only about 31 customers are retained on average, resulting in a repeat 
 
 <img src="https://github.com/Philipy-Ferreira/data-analysis/blob/f2ec569b3e9861e2847a2ca5bfd3a7230096ca1e/Projects/Screenshot%202026-04-10%20224921.png" width="800"/>
 
-This dynamic reveals that growth is entirely acquisition-driven. Even during peak periods such as November, where both orders and revenue increase significantly, the surge is explained by new customers rather than repeat behavior.
+This dynamic reveals that growth is not driven by retention but by continuous customer acquisition, with peaks such as November driven entirely by inflow rather than repeat demand.
 
 > [!IMPORTANT]
-> The implication is that the marketplace lacks demand accumulation. Each period starts effectively from zero, making growth dependent on continuous customer inflow and increasing acquisition costs over time.
+> The marketplace operates without demand accumulation, making growth structurally dependent on acquisition. This increases CAC pressure and limits long-term scalability.
 
 > [!TIP]
-> This retention gap represents the most immediate structural opportunity. Improving repeat purchase behavior would allow > growth to compound, increasing customer lifetime value and reducing reliance on external demand generation. **Loyalty programs, improved user experience and post-purchase engagement** are therefore central to unlocking this potential.
+> Improving retention is the highest-impact lever: even marginal gains would compound growth, reduce acquisition dependency, and increase customer lifetime value. **Loyalty programs, improved user experience and post-purchase engagement** are therefore central to unlocking this potential.
+
+
+## Operational driver
+
+Operational performance shows high reliability on average, with 93.12% of orders delivered on time and 6.88% delayed. However, delays spike during peak periods, reaching up to 18%.
+
+Regression analysis identifies delivery time as the strongest predictor of customer satisfaction, with each additional day reducing review score by 0.05 points.
+
